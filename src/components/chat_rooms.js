@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateRooms, setRoom } from '../actions';
-import db from '../firebase';
+import { db } from '../firebase';
 
 class ChatRooms extends Component {
     componentDidMount(){
