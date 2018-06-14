@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MessageInput from './message_input';
-import db from '../firebase';
+import { db } from '../firebase';
 import { connect } from 'react-redux';
 import { updateChat, setRoom, clearChatData } from '../actions';
 
