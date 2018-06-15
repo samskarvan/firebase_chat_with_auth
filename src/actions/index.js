@@ -4,11 +4,16 @@ import { db, auth } from '../firebase';
 export function createAccount(userData){
     return async dispatch => {
         try {
-            const newUser = auth.createUserWithEmailAndPassword(userData.email, userData.password);
-
+           await auth.createUserWithEmailAndPassword(userData.email, userData.password);
+            
+           const newUser = auth.currentUser;
             // TODO Add username to user, update redux state with user info
             
             console.log('New User:', newUser);
+
+            await newUser.updateProfile({
+                displayName: userData.username
+            });
         } catch(err){
             console.log('Create Account Error:', err.message);
         }
