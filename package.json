@@ -8,11 +8,11 @@
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Scott Bowler",
+  "author": "Sam Skarvan",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scbowler/firebase-chat-app.git"
+    "url": "https://github.com/samskarvan/firebase_chat_with_auth.git"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

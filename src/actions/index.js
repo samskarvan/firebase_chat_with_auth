@@ -20,6 +20,41 @@ export function createAccount(userData){
     }
 }
 
+export function signOutUser(){
+    return async dispatch => {
+        try{
+            await auth.signOut();
+
+            console.log('sign out user');
+        }catch(err){
+            console.log('error!!!!!!!!!!', err.message);
+        }
+    }
+}
+
+export function signInUser({email, password}){
+    return async dispatch =>{
+        try{
+            await auth.signInWithEmailAndPassword(email, password);
+        }catch(err){
+            console.log('hay un eror lol:', err.message);
+            //dispatch error for UX
+        }
+    }
+}
+export function signInAction(user){
+    return{
+        type: types.SIGN_IN,
+        email: user.email,
+        username: user.displayName
+    }
+}
+
+export function signOutAction(){
+    return{
+        type: types.SIGN_OUT
+    }
+}
 export function updateChat(chatLog){
 
     return {
@@ -35,13 +70,25 @@ export function updateInput(name, value){
     }
 }
 
-export function sendMessageToDatabase(id, message){
+export function sendMessageToDatabase(id, message, username){
     db.ref(`/chat-logs/${id}`).push({
-        name: 'Stu',
+        name: username,
         message
     });
 }
 
+export function clearManyInputs(names){
+    const toClear = {};
+
+    names.map (name => {
+        toClear[name] = '';
+    });
+
+    return{
+        type: types.CLEAR_MANY_INPUTS,
+        payload: toClear
+    }
+}
 export function clearInput(name){
     return {
         type: types.CLEAR_INPUT,
